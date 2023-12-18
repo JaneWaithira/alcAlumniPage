@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALC Alumni Community</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300&family=Modak&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.1/mustache.js"
+        integrity="sha512-IDcWx4i9cyu+HgDbPzY7fKV9aOh0Skt1iFFTZype6N1c/Slqwum0UaGX/Ek2ZSS+RNoaGvtGsTPiSVNfMKaffg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="import" href="/views/upcomingEvents.mustache">
+<style>
+    /* Events on index page */
+:root {
+    --color-darkgrey: rgba(149, 180, 177, 1);
+    --color-whitesmoke: rgba(245, 245, 245, 1);
+    --color-seagreen: rgba(55, 111, 90, 1);
+    --color-darkslategrey: rgba(39, 78, 63, 1);
+    --color-gold: rgba(255, 200, 44, 1);
+    --color-white: rgba(255, 255, 255, 1);
+    --font-size-20: 20px;
+    --font-size-24: 24px;
+    --font-size-25: 25px;
+    --font-weight-400: 400;
+    --font-weight-500: 500;
+    --border-radius-25: 25px;
+}
+
+ body {
+    margin: 0;
+    font-family: 'Lexend', sans-serif;
+}
+#upcoming-events{
+    padding: 10px;
+}
+
+#upcoming-events h4 {
+    color: #274E3F;
+    font-weight: bold;
+    font-size: 30px;
+    font-family: 'Lexend';
+    text-align: center;
+
+}
+
+.allevents-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 45px;
+    border: 1px solid #95B4B1;
+    padding: 10px;
+    background-color: #FFFFF5;
+    overflow-x: auto;
+    padding-bottom: 20px;
+    
+}
+
+.event {
+    flex:0 0 auto;
+    width: 300px;
+    border: 1px solid #95B4B1;
+    background-color: #F5F5F5;
+    border-radius: 25px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+   
+}
+/* .image-div {
+    padding-bottom: 5px;
+} */
+
+.event-image {
+    width: 100%;
+    height: 200px;
+    /* border: 1px solid var(--color-darkgrey); */
+    border-radius: var(--border-radius-25);
+    object-fit: cover;
+}
+
+
+
+.event-details {
+    flex: 1;
+    padding: 10px;
+    font-family: 'Lexend', sans-serif;
+    text-align: center;
+    overflow: hidden;
+}
+
+.event-details .title {
+    font-size: var(--font-size-20);
+    font-weight: var(--font-weight-500);
+    margin-bottom: 20px;
+    color: var(--color-darkslategrey);
+}
+
+.location,
+.category {
+    font-size: var(--font-size-20);
+    font-weight: var(--font-weight-400);
+    color: var(--color-seagreen);
+    margin-bottom: 20px;
+}
+
+.register {
+    justify-content: space-between;
+    margin-top: auto;
+    background-color: var(--color-gold);
+    color: var(--color-darkslategrey);
+    width: 150px;
+    padding: 10px;
+    margin-top: 5px;
+    margin-right: 10px;
+    border: 1px solid #95B4B1;
+    border-radius: var(--border-radius-25);
+    font-family: 'Lexend', sans-serif;
+    font-weight: var(--font-weight-500);
+    font-size: var(--font-size-20);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+</style>
+</head>
+
+<body class=" d-flex flex-column">
+
+    <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #f5f5f5; border-bottom: 1px solid #95B4B1;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#" style="color: #FFC82C; font-size: 30px; font-family: 'Modak';">ALC</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- sidebar -->
+            <div class="sidebar offcanvas offcanvas-start" tabindex="-1" id="offcanvasDarkNavbar"
+                aria-labelledby="offcanvasDarkNavbarLabel">
+                <!-- sidebar header -->
+                <div class="offcanvas-header border-bottom">
+                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel"
+                        style="color: #FFC82C; font-size:large; font-family: 'Modak';">ALC</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <!-- sidebar body -->
+                <div class="offcanvas-body d-flex flex-column flex-lg-row p-3 p-lg-0 ">
+                    <ul class="navbar-nav justify-content-center align-items-center fs-5 flex-grow-1 pe-3 gap-1">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#"
+                                style="color: #376F5A; font-family: 'Lexend'; font-size: 25; font-weight: bold;">About
+                                Us</a>
+                        </li>
+                        <li class="nav-item mx-4">
+                            <a class="nav-link" href="#events"
+                                style="color: #376F5A; font-family: 'Lexend'; font-size: 25; font-weight: bold;">Events</a>
+                        </li>
+                    </ul>
+                    <!-- Log In/ register -->
+                    <div class="d-flex flex-column flex-lg-row align-items-center gap-4">
+                        <a href="/login"
+                            style="color: #376F5A; font-family: 'Lexend'; font-weight: bold; margin-right: 20px;">Log
+                            In</a>
+                        <a href="/register" class="text-decoration-none px-3 py-1 rounded-4 "
+                            style="background-color: #f5f5f5; color: #376F5A; border: 1px solid #95B4B1; font-family: 'Lexend'; font-weight: bolder; margin-right: 10px;">Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- content -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <img class="img-fluid"
+                    src="../Images/Best  Concept about Problem Solution by business manager  Illustration download in PNG & Vector format.jpeg"
+                    alt="People">
+            </div>
+            <div class="col-md-6">
+                <div class="content-text">
+                    <h2>Community is all we are about</h2>
+                    <p>How’s Al?</p>
+                    <p>Bet you’re curious.</p>
+                    <p>Dive in & check in with our community.</p>
+                    <p>Whether you want a casual hang, network for work,</p>
+                    <p>or check in with old friends both on campus and out,</p>
+                    <p>We have all that and more.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center" style="margin-top: 10px;">
+                    <div class="message">
+                        <span class="font-weight-normal">Create an account & gain full access to all <span
+                                class="accent-text">Events</span>,</span><br>
+                        <span class="font-weight-normal">simply click on <span
+                                style="font-weight: bold;">Register</span>,</span><br>
+                        <span class="font-weight-normal">enter your alumni details and soak in all the fun.</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Mission -->
+            <div class="row" style="margin-left: 70px; margin-top: 20px;">
+                <div class="col-md-5">
+                    <div class="custom-box mission-box">
+                        <h5>Mission</h5>
+                        <p>To empower everyone in the ALC Alumni community, to learn, grow & connect.</p>
+                    </div>
+                    <div class="custom-box vision-box">
+                        <h5>Vision</h5>
+                        <p>To involve the greatest possible number of ALC alumni, through fun, creative & engaging
+                            events.</p>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="custom-box why-box">
+                        <h5>Why?</h5>
+                        <p>Because we care about you, & the limitless capability of our community.</p>
+                    </div>
+                    <div class="line"></div>
+                    <div class="cta-text">
+                        <p>... Let us take you to your dream <span class="accent-text">events</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upcoming events -->
+            <div id="upcoming-events">
+                <h4>Upcoming Events</h4>
+                <div id="events-container" class="allevents-container">
+                    <!-- This is where the events will be rendered -->
+                </div>
+        
+            </div>
+
+            <!-- Leadership section -->
+            <div class="leader-section">
+                <div class="row">
+                    <div class="role col-lg-4 col-md-12 col-12">
+                        <div class="img">
+                            <img src="../Images/@cupofcuffee on all social platforms.jpeg" alt="leader">
+                        </div>
+                        <p class="name" style="color: #376F5A;"><strong>Kim Kamau</strong><br />
+                            Product Manager, Spotify UK
+                        </p>
+                    </div>
+                    <div class="info col-lg-8 col-md-12 col-12 ps-lg-5 mt-md-5">
+                        <div class="leader-text">
+                            <h5>Our <br />
+                                Leadership</h5>
+                            <h7>Kim Kamau</h7><br />
+                            <h7>ALC 2014</h7><br />
+                            <p> Kim is an accomplished product manager at Spotify UK. She has been ALC Alumni community
+                                Events Manager for 6 months. She has proven her leadership, integrity, and grit through
+                                successfully navigating her duties as a community manager.
+                            </p>
+                            <p style="margin-top: 57px;"><strong>Mission:</strong> To positively contribute to the
+                                thriving ALC Alumni community, and
+                                connect our family.</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="row">
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h5 class="text-uppercase font-weight-bold">Event Count</h5>
+                <h6>Professional development</h6>
+                <p class="m-0">100+</p><br />
+                <h6>Networking</h6>
+                <p class="m-0">20+</p><br />
+                <h6>Campus Events</h6>
+                <p class="m-0">30+</p><br />
+            </div>
+            <div class="col-md-3 col-lg-2 mx-auto mt-3 ">
+                <div class="text-uppercase mb-4 font-weight-bold text-warning">
+                    <p class="m-0"><a href="/register"> Events</a></p>
+                    <p class="m-0" ><a href="/register"> Register</a></p>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h5>Let's stay connected</h5>
+                <p>
+                    <i class="fas fa-home mr-3"></i> 21001 Port Louis, Mauritius<br />
+                    <i class="fas fa-envelope mr-3"></i> alumni@alc.com<br />
+                    <i class="fas fa-phone mr-3"></i> 555-846-734<br />
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.2.0/mustache.min.js"></script>  -->
+
+    <script id="futureEvents-template" type="text/mustache">
+        
+            {{#events}}
+            <div class="event">
+                <div class="image-div">
+                    {{#image}}
+                    <img class="event-image" src="{{image}}" alt="Event Image">
+                    {{/image}}
+                </div>
+    
+                <div class="event-details">
+                    <span class="title"> <strong>Title: </strong>{{title}}</span><br>
+                    <span class="location"><strong>Location: </strong>{{location}}</span><br>
+                    <span class="category"><strong>Category: </strong>{{category}}</span><br>
+                    <a href="/register">
+                    <button class="register"><strong>Register to view</strong></button>
+                    </a>
+                 
+                </div>
+            </div>
+            {{/events}}
+        
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const eventsIndexContainer = document.getElementById('events-container');
+
+            if (eventsIndexContainer) {
+                fetch('/events/allEventsJson')
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                        const template = document.getElementById('futureEvents-template').innerHTML;
+                        const eventsHTML = Mustache.render(template, { events: data.events });
+                        eventsIndexContainer.innerHTML = eventsHTML;
+                    })
+                    .catch(error => console.error(error));
+            } else {
+                console.error("Element with ID 'events-container' not found");
+            }
+
+        });
+    </script>
+
+</body>
+
+
+
+
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300&family=Modak&display=swap" rel="stylesheet">
+
+    <title>Register</title>
+    <style>
+        /* Your CSS styles here */
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Lexend';
+        }
+
+        body {
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 650px;
+            background-color:#f5f5f5;
+            padding: 28px;
+            margin: 0 28px;
+            border-radius: 10px;
+            box-shadow: inset -2px 2px 2px white;
+        }
+
+        .form-title {
+            font-size: 26px;
+            font-weight: 600;
+            text-align: center;
+            padding-bottom: 6px;
+            color: #376F5A;
+            border-bottom: solid 1px #95B4B1;
+        }
+
+        .main-user-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 20px 0;
+        }
+
+        .user-input-box {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            padding-bottom: 15px;
+        }
+
+        .user-input-box label {
+            width: 100%;
+            color: white;
+            font-size: 20px;
+            font-weight: 400;
+            margin: 5px 0;
+        }
+
+        .user-input-box input {
+            height: 40px;
+            width: 100%;
+            border-radius: 25px;
+            outline: none;
+            border: 1px solid grey;
+            padding: 0 10px;
+        }
+
+        .error-message {
+            
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .form-submit-btn {
+            margin-top: 20px;
+            justify-content: center;
+            
+        }
+
+        .form-submit-btn input {
+            display: block;
+            width: 100%;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 10px;
+            border: none;
+            border-radius: 25px;
+            color: #376F5A;
+            background-color:#ffc82c ;
+            cursor: pointer;
+        }
+
+        .form-submit-btn input:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="form-title">Registration</h1>
+        <form id="registerForm" action="/register" method="POST">
+            <div class="main-user-info">
+                <div class="user-input-box">
+                    <input type="text" id="name" name="name" placeholder="Full Name" required value="{{name}}">
+                    {{#errors.name}}
+                        <p class="error-message">{{msg}}</p>
+                    {{/errors.name}}
+                </div>
+                <div class="user-input-box">
+                    <input type="text" id="year" name="year" placeholder="ALC Class" required value="{{year}}">
+                    {{#errors.year}}
+                        <p class="error-message">{{msg}}</p>
+                    {{/errors.year}}
+                </div>
+                <div class="user-input-box">
+                    <input type="email" id="email" name="email" placeholder="name@alcalumni.com" required value="{{email}}">
+                    {{#errors.email}}
+                        <p class="error-message">{{msg}}</p>
+                    {{/errors.email}}
+                </div>
+                <div class="user-input-box">
+                    <input type="password" id="password" name="password" placeholder="Password" required value="{{password}}">
+                    {{#errors.password}}
+                        <p class="error-message">{{msg}}</p>
+                    {{/errors.password}}
+                </div>
+                <div class="user-input-box">
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required value="{{confirmPassword}}">
+                    {{#errors.confirmPassword}}
+                        <p class="error-message" style="color: red;">{{msg}}</p>
+                    {{/errors.confirmPassword}}
+                </div>
+            </div>
+            <div class="form-submit-btn">
+                <input type="submit" value="Register">
+            </div>
+        </form>
+    </div>
+    <script src="/routes/authRoutes.js"></script>
+</body>
+
+</html>

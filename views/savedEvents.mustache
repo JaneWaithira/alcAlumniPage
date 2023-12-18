@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Modak:wght@400" />
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300&family=Modak&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --color-darkgrey: rgba(149, 180, 177, 1);
+            --color-whitesmoke: rgba(245, 245, 245, 1);
+            --color-seagreen: rgba(55, 111, 90, 1);
+            --color-darkslategrey: rgba(39, 78, 63, 1);
+            --color-gold: rgba(255, 200, 44, 1);
+            --color-white: rgba(255, 255, 255, 1);
+            --font-size-20: 20px;
+            --font-size-24: 24px;
+            --font-size-25: 25px;
+            --font-weight-400: 400;
+            --font-weight-500: 500;
+            --border-radius-25: 25px;
+        }
+
+         body {
+            margin: 0;
+            font-family: 'Lexend', sans-serif;
+        }
+
+        .allevents-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-top: 45px;
+            background-color: #FFFFFA;
+        }
+
+        .event {
+            display: flex;
+            width: 100%;
+            border: 1px solid #95B4B1;
+            background-color: #F5F5F5;
+            border-radius: 25px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+           
+        }
+        .image-div {
+            padding-bottom: 5px;
+        }
+
+        .event-image {
+            width: 300px;
+            height: 200px;
+            border: 1px solid var(--color-darkgrey);
+            border-radius: var(--border-radius-25);
+            object-fit: cover;
+        }
+
+       .event-details {
+            flex: 1;
+            padding: 10px;
+            font-family: 'Lexend', sans-serif;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .event-details .title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #274E3F;
+        }
+
+        .event-details .date,
+        .location,
+        .category {
+            font-size: 16px;
+            font-weight: bold;
+            color: #376F5A;
+            margin-bottom: 20px;
+        }
+
+        .event-details .description {
+            color: #376F5A;
+            margin-bottom: 20px;
+            padding-bottom: 40px;
+        }
+
+        .cancel {
+            justify-content: space-between;
+            margin-top: auto;
+            background-color: #FFC82C;
+            color: #274E3F;
+            width: 150px;
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid #95B4B1;
+            border-radius: 25px;
+            font-family: 'Lexend', sans-serif;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+    </style>
+</head>
+ 
+
+<body>
+    <div class="allevents-container">
+        {{#events}}
+        <div class="event">
+            <div class="image-div">
+                {{#image}}
+                <img class="event-image" src="{{image}}" alt="Event Image">
+                {{/image}}
+            </div>
+
+            <div class="event-details">
+                <span class="title"><strong>Title: </strong>{{title}}</span><br>
+                <span class="date"><strong>Date: </strong>{{startDateTime }} to {{endDateTime}}</span><br>
+                <span class="location"><strong>Location: </strong>{{location}}</span><br>
+                <span class="category"><strong>Category: </strong>{{category}}</span><br>
+                <span class="description"><strong>Description: </strong>{{description}}</span><br>
+                <button class="cancel" data-event-id="{{_id}}"><i class="fa-solid fa-xmark"></i> CANCEL</button>
+             
+            </div>
+        </div>
+{{/events}}
+</body>
+</html>
+

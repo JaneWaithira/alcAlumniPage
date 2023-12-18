@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300&family=Modak&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300&family=Modak&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.1/mustache.js"
+        integrity="sha512-IDcWx4i9cyu+HgDbPzY7fKV9aOh0Skt1iFFTZype6N1c/Slqwum0UaGX/Ek2ZSS+RNoaGvtGsTPiSVNfMKaffg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <title>Admin</title>
+</head>
+
+<body class="events">
+    <nav class="navbar navbar-expand fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#" style="color: #FFC82C; font-size: 30px; font-family: 'Modak';">ALC</a>
+            <div class="navbar justify-content-center align-items-center">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#about-us"
+                            style="color: #376F5A; font-family: 'Lexend'; font-size: 16px; ">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#events"
+                            style="color: #376F5A; font-family: 'Lexend'; font-size: 16px;">Events</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="wrapper">
+
+        <div class="side-bar">
+            <div class="profile">
+                <img class="profile-picture" src="/Images/The BEST Blush For Every Skin Tone.jpg" alt="image">
+                <div class="user-info">
+                    <div class="user-name">{{userName}}</div>
+                    <div class="user-group">{{classYear}}</div>
+                </div>
+            </div>
+            <!-- <i class="fa-solid fa-arrow-right toggle"></i> -->
+            <div class="menu-items">
+                <div class="menu-item active" id="addEventButton"><i class="fas fa-circle-plus"></i><span>Add
+                        Event</span></div>
+                <div class="menu-item" id="dashboard"><i class="fas fa-regular fa-table"></i><span>Alumni Records</span>
+                </div>
+                <div class="menu-item" id="allEventsButton"><i class="fas fa-calendar-week"></i><span>All Events</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="event-content">
+
+            <!-- Add event -->
+            <div id="addEventForm" class="modal"></div>
+            <div class="addUser">
+                <h2>Alumni Records</h2>
+                <button class="btn" id="addAlumniButton"> <i class="fa-solid fa-user-plus"></i> Add Alumni</button>
+            </div>
+
+            <div class="table-data">
+                <!-- dashboard -->
+            </div>
+        </div>
+    </div>
+
+    <script src="/JavaScript/admin.js"> </script>
+</body>
+
+
+</html>

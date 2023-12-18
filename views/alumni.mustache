@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Modak:wght@400" />
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300&family=Modak&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"
+    integrity="sha256-o9EaGAsBsXAkKQd5d7WtW6d+6t8A0kE4lSiLrGjAvZk="
+    crossorigin="anonymous"></script>
+
+
+        <style>
+        [contenteditable="true"]:focus {
+            outline: 2px solid #007bff;
+        }
+
+        thead th{
+            align-items: center;
+        }
+        </style>
+</head>
+<body>
+<!-- alumni.mustache -->
+<!-- alumni.mustache -->
+
+<table class="table table-light table-hover">
+    <thead>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Year</th>
+        <th>Actions</th>
+        <th>Created Events</th>
+        <th>Saved Events</th>
+    </thead>
+    <tbody>
+        {{#alumni}}
+        <tr>
+            <td contenteditable="true" data-alumni-id="{{_id}}" data-field="name">{{name}}</td>
+            <td contenteditable="true" data-alumni-id="{{_id}}" data-field="email">{{email}}</td>
+            <td contenteditable="true" data-alumni-id="{{_id}}" data-field="year">{{year}}</td>
+            <td>
+        <!-- Edit button -->
+          <button class="btn btn-primary edit-btn" data-alumni-id="{{_id}}">Edit</button>
+          <!-- Save Edit button (initially hidden) -->
+          <button class="btn btn-success save-btn" data-alumni-id="{{_id}}">Save</button>
+          <!-- Delete button -->
+          <button class="btn btn-danger delete-btn" data-alumni-id="{{_id}}">Delete</button>
+            </td>
+              <td>{{createdEventsCount}}</td>
+        <td>{{savedEventsCount}}</td>
+        </tr>
+        {{/alumni}}
+    </tbody>
+</table>
+
+<script src="/JavaScript/admin.js"></script>
+</body>
+</html>

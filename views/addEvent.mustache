@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300&family=Modak&display=swap" rel="stylesheet">
+    <style>
+    body .eventsForm {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Lexend';
+    margin: 0;
+}
+
+.form-container {
+    background-color: #f5f5f5;
+    padding: 20px;
+    width: 70%;
+    margin-top: 10px;
+    margin-left:200px;
+    border: 1px solid #95B4B1;
+    border-radius: 25px;
+}
+h4{
+    color:#274E3F;
+    align-items: center;
+    margin-left: 40%;
+    font-weight: bold;
+    margin-bottom: 10px;
+
+
+}
+
+.form-group {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    display: block;
+    color: #274E3F;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: calc(100% - 16px); /* Subtract padding and border width */
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 25px;
+    border: 1px solid #95B4B1;
+    box-sizing: border-box;
+}
+
+.form-select {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    background-color: transparent;
+    border: none;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+
+}
+
+.form-actions button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cancel {
+    background-color: #F5F5F5;
+    color: #376F5A;
+    border: 1px solid #274E3F;
+}
+
+.submit {
+    background-color: #FFD233;
+    color: #376F5A;
+    font-weight: bold;
+    border: 1px solid #FFD233;
+}
+.form-actions button:hover{
+    text-decoration: underline;
+
+}
+@media(max-width: 768px) {
+    .form-container{
+        width: 100%;
+    }
+    .orm-select {
+        display: flex;
+        flex-direction: column;
+         flex-wrap: wrap;
+        
+    }
+}
+
+    </style>
+    <title>Login</title>
+</head>
+
+<body class="eventsForm">
+    <div class="form-container">
+    <h4>Add Event</h4>
+    <form enctype="multipart/form-data" action="/events/addEvent" method="POST" id="addEventForm">
+        <div class="form-group">
+            <label for="title">Title*</label>
+            <input type="text" id="title" name="title" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Description*</label>
+            <input type="text" id="description" name="description" required>
+        </div>
+        <div class="form-group">
+            <label for="location">Location*</label>
+            <input type="text" id="location" name="location" required>
+        </div>
+        <div class="form-group">
+            <label for="category">Category*</label>
+            <select id="category" name="category" required>
+                <option value="Professional Development">Professional Development</option>
+                <option value="Networking">Networking</option>
+                <option value="Campus Event">Campus Event</option>
+            </select>
+        </div>
+    <div class="form-select">
+        <div class="form-group">
+            <label for="startDateTime">Event Start*</label>
+            <input type="datetime-local" id="startDateTime" name="startDateTime" required>
+        </div>
+        <div class="form-group">
+            <label for="endDateTime" class="end-label">Event End*</label>
+            <input type="datetime-local" id="endDateTime" name="endDateTime" required>
+        </div>
+    </div>
+        <div class="form-group">
+            <label for="image">Event Image</label>
+            <input type="file" id="image" name="image" accept="image/*" multiple>
+        </div>
+        <div class="form-actions">
+    <button type="button" class="cancel" onclick="window.location='/events'">CANCEL</button>
+    <button type= "submit" class="submit">PUBLISH</button>
+</div>
+</form>
+    </div>
+</body>
+
+</html>
